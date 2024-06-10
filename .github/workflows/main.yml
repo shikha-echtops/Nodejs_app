@@ -25,7 +25,11 @@ jobs:
         run: npm run build
 
       - name: Deploy to EC2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AKIATCKAMSROOWC6V3LG }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.59Ub4oGgmMvJf/YCPvA0OI1JnkOpwHLMhxz1lFzv }}
         run: |
           # Use Terraform to apply changes to infrastructure
           terraform init
           terraform apply -auto-approve
+          echo "Terraform apply exit code: $?"
